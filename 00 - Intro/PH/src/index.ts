@@ -1,26 +1,27 @@
-let course: string = 'O_o';
-console.log(course);
+// What build in data types are in JS (6)
+// number, string, boolean, null, undefined, symbol
 
-let numA = 1;
-let numB = 2;
+// What data types are extended & added to JS by TS (5)
+// enum, touple, -any-. -unknown-, -never-
 
-function sum(numA: number, numB: number): number {
-  return numA + numB;
-}
-
-console.log(sum(10, 20));
-
-let num: number = 10;
-let word: string = 'A';
-
-function sumA(num: number, word: string) {
-  return num + word;
-}
-
-console.log(num + word);
-
+// Create a variable with number type
 let age: number = 30;
+// Create a large number and use _ in between for ease of use
+let largeNumber: number = 1_00_00_000;
+// Create a variable with string type
+let fname: string = 'Shakib';
 
-if (age < 50) {
-  age += 10;
-}
+// Create a variable with boolean type
+let isOk = true;
+
+// What is TypeScript Infer
+
+// How dose it work
+// Remove the TS type from the previous data types and see
+// What if we declare a variable, but don't add any value to it what data type dose it get
+let empty;
+
+console.log(empty);
+
+let a: number = 4;
+a = 'O_o';
