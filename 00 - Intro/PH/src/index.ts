@@ -18,3 +18,9 @@ function sumA(num: number, word: string) {
 }
 
 console.log(num + word);
+
+let age: number = 30;
+
+if (age < 50) {
+  age += 10;
+}
