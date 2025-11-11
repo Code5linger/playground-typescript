@@ -111,3 +111,45 @@ const user: {
   middleName: 'Ahmed',
   lastName: 'Sourov',
 };
+
+function taxCal(num: number, taxYear: number = 2022): number {
+  if (taxYear || 2020) {
+    return num * 1.05;
+  } else {
+    return num * 1.03;
+  }
+}
+
+console.log(taxCal(10_000, 2015));
+console.log(taxCal(20_000));
+
+// function person(person: { name: string }) {
+//   console.log(person.name);
+// }
+
+//
+function sum(numA: number, numB: number): number {
+  return numA + numB;
+}
+sum(5, 9);
+
+const add = (num1: number, num2: number): number => num1 + num2;
+add(7, 8);
+
+//
+const demo = {
+  name: 'Sakib',
+  balance: 0,
+  addBalance(value: number): number {
+    const totalBalance = (this.balance += value);
+    return totalBalance;
+  },
+};
+
+demo.addBalance(10);
+console.log(demo);
+
+const arr: number[] = [1, 2, 3];
+const squareArray = arr.map((element: number) => element * element);
+
+console.log(squareArray);

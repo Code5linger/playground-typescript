@@ -39,4 +39,23 @@ const person = {
 person.isProgrammer = true;
 console.log(typeof person);
 console.log(person);
+const nums = [1, 2, 3];
+function getValue(key, person) {
+    return person[key];
+}
+const user = {
+    firstName: 'Sakib',
+    middleName: 'Ahmed',
+    lastName: 'Sourov',
+};
+function taxCal(num, taxYear) {
+    if (taxYear < 2020) {
+        return num * 1.05;
+    }
+    else {
+        return num * 1.03;
+    }
+}
+console.log(taxCal(10000, 2015));
+console.log(taxCal(10000, 2025));
 //# sourceMappingURL=index.js.map
