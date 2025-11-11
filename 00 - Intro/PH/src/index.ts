@@ -101,3 +101,13 @@ type person = {
 function getValue(key: keyof Person, person: Person) {
   return person[key];
 }
+
+const user: {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+} = {
+  firstName: 'Sakib',
+  middleName: 'Ahmed',
+  lastName: 'Sourov',
+};
