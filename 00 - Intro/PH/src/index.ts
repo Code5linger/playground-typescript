@@ -128,28 +128,61 @@ console.log(taxCal(20_000));
 // }
 
 //
-function sum(numA: number, numB: number): number {
-  return numA + numB;
+// function sum(numA: number, numB: number): number {
+//   return numA + numB;
+// }
+// sum(5, 9);
+
+// const add = (num1: number, num2: number): number => num1 + num2;
+// add(7, 8);
+
+// //
+// const demo = {
+//   name: 'Sakib',
+//   balance: 0,
+//   addBalance(value: number): number {
+//     const totalBalance = (this.balance += value);
+//     return totalBalance;
+//   },
+// };
+
+// demo.addBalance(10);
+// console.log(demo);
+
+// const arr: number[] = [1, 2, 3];
+// const squareArray = arr.map((element: number) => element * element);
+
+// console.log(squareArray);
+
+// 5-7 Function in typescript
+function sum(num1: number, num2: number): number {
+  return num1 + num2;
 }
-sum(5, 9);
 
-const add = (num1: number, num2: number): number => num1 + num2;
-add(7, 8);
+console.log(sum(5, 9));
 
-//
-const demo = {
-  name: 'Sakib',
+const summ = (num1: number, num2: number): number => num1 + num2;
+
+console.log(summ(9, 9));
+
+const object = {
+  id: 1,
+  name: 'summetion',
   balance: 0,
   addBalance(value: number): number {
-    const totalBalance = (this.balance += value);
-    return totalBalance;
+    const updatedBalance = (this.balance += value);
+    return updatedBalance;
   },
 };
 
-demo.addBalance(10);
-console.log(demo);
+console.log(object);
+object.addBalance(10);
+console.log(object);
 
-const arr: number[] = [1, 2, 3];
-const squareArray = arr.map((element: number) => element * element);
-
+const array: number[] = [1, 2, 3];
+console.log(array);
+const squareArray = array.map((item: number): number => item * item);
 console.log(squareArray);
+
+// 5-8 Rest & Spread Operator
+
