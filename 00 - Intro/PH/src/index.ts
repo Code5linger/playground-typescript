@@ -295,3 +295,119 @@ type AddValue = (num1: number, num2: number) => number;
 const addValue: AddValue = (num1: number, num2: number): number => num1 + num2;
 
 addValue(2, 2);
+
+// Union
+type UserRole = 'admin' | 'user' | 'guest';
+
+const dashboard = (role: UserRole) => {
+  if (role === 'admin') {
+    return 'Admin Dashboard';
+  } else if (role === 'user') {
+    return 'User Dashboard';
+  } else if (role === 'guest') {
+    return 'Guest Dashboard';
+  } else {
+    return 'WTF';
+  }
+};
+
+// console.log(dashboard('O_o'));
+console.log(dashboard('admin'));
+console.log(dashboard('user'));
+console.log(dashboard('guest'));
+// console.log(dashboard(69));
+
+type Employee = {
+  id: string;
+  name: string;
+  phoneNo: number;
+};
+
+type Manager = {
+  position: string;
+  teamSize: number;
+};
+
+type EmployeeManager = Employee & Manager;
+
+const testUser: EmployeeManager = {
+  name: 'O_o',
+  id: 'A12',
+  phoneNo: 567,
+  position: 'Manager',
+  teamSize: 6,
+};
+
+// 5-12 ternary, nullish coalescing & optional chaining
+const userAge = 21;
+
+const eligibilityCheck = (age: number): void => {
+  const result = age >= 21 ? console.log('✔️') : console.log('❌');
+  return result;
+};
+
+eligibilityCheck(15);
+eligibilityCheck(25);
+
+const userTheme = undefined;
+const selectedTheme = userTheme ?? 'Light Theme';
+
+console.log(selectedTheme);
+
+type UserInfo = {
+  address: {
+    city: string;
+    town: string;
+    zipCode: number;
+  };
+};
+
+const userInfo: UserInfo = {
+  address: {
+    city: 'Dhaka',
+    town: 'Narayangonj',
+    zipCode: 1421,
+  },
+};
+
+console.log(userInfo);
+console.log(userInfo.address);
+console.log(userInfo?.address?.zipCode);
+
+//
+const getUser = (input: string | null) => {
+  if (input) {
+    console.log('O_o' + input);
+  } else {
+    console.log('XD');
+  }
+};
+
+getUser('Test');
+getUser(null);
+
+//
+const discountCalculator = (input: unknown): void => {
+  if (typeof input === 'number') {
+    const discountedPrice = input * 0.1;
+    console.log(discountedPrice);
+  } else if (typeof input === 'string') {
+    const discountedPrice = parseInt(input) * 0.1;
+    console.log(discountedPrice);
+  } else if (typeof input === null) {
+    console.log(`${input} is not valid.`);
+  } else {
+    console.log('O_o');
+  }
+};
+
+discountCalculator(100);
+discountCalculator('100 Taka');
+discountCalculator(null);
+
+//
+const throwError = (msg: string): never => {
+  throw new Error(msg);
+};
+
+throwError('Error!');
