@@ -34,7 +34,7 @@ let mixedArr: (string | number | boolean)[] = [
   12,
   'milk',
   1,
-  'suger',
+  'sugar',
   5,
 ];
 mixedArr.push(true);
@@ -42,7 +42,7 @@ mixedArr.push(true);
 // Tuple
 let coord: [number, number] = [20, 30];
 
-let couple: [string, string] = ['husbend', 'wife'];
+let couple: [string, string] = ['husband', 'wife'];
 
 let student: [string, number] = ['Sakib', 17];
 
@@ -102,15 +102,15 @@ function getValue(key: keyof Person, person: Person) {
   return person[key];
 }
 
-const user: {
-  firstName: string;
-  middleName: string;
-  lastName: string;
-} = {
-  firstName: 'Sakib',
-  middleName: 'Ahmed',
-  lastName: 'Sourov',
-};
+// const user: {
+//   firstName: string;
+//   middleName: string;
+//   lastName: string;
+// } = {
+//   firstName: 'Sakib',
+//   middleName: 'Ahmed',
+//   lastName: 'Sourov',
+// };
 
 function taxCal(num: number, taxYear: number = 2022): number {
   if (taxYear || 2020) {
@@ -161,13 +161,9 @@ function sum(num1: number, num2: number): number {
 
 console.log(sum(5, 9));
 
-const summ = (num1: number, num2: number): number => num1 + num2;
-
-console.log(summ(9, 9));
-
 const object = {
   id: 1,
-  name: 'summetion',
+  name: 'summation',
   balance: 0,
   addBalance(value: number): number {
     const updatedBalance = (this.balance += value);
@@ -186,3 +182,116 @@ console.log(squareArray);
 
 // 5-8 Rest & Spread Operator
 
+// Rest Operator
+const friends: string[] = ['A', 'B'];
+const schoolFriend: string[] = ['C', 'D'];
+const collegeFriend: string[] = ['E', 'F'];
+
+console.log(friends);
+friends.push(...schoolFriend);
+console.log(friends);
+friends.push(...collegeFriend);
+console.log(friends);
+
+const userData = {
+  name: 'Sakib',
+  age: 30,
+};
+
+const updatedData = {
+  hobby: 'exploring',
+  favoriteColor: 'black',
+};
+
+const totalUserData = { ...userData, ...updatedData };
+console.log(totalUserData);
+
+// Spread Operator
+// const sendInvite = (...friend: string[]) => {
+//   friend.map((invitee) => console.log(`Invite sent to ${invitee}`));
+// };
+
+// sendInvite('A', 'B', 'C', 'D');
+
+const sendInvite = (friendA: string, friendB: string, friendC: string) => {
+  console.log('Send invite to ' + friendA);
+  console.log('Send invite to ' + friendB);
+  console.log('Send invite to ' + friendC);
+};
+
+sendInvite('A', 'B', 'C');
+
+// 5-9 Destructuring in typescript
+type User = {
+  id: number;
+  name: {
+    fname: string;
+    mName: string;
+    lName: string;
+    nickName: {
+      a: string;
+      c: string;
+    };
+  };
+  gender: 'male' | 'female' | 'others';
+  favoriteColor: string;
+};
+
+const user: User = {
+  id: 123,
+  name: {
+    fname: 'Sheikh',
+    mName: 'Shakib',
+    lName: 'Ahmed',
+    nickName: {
+      a: 'B',
+      c: 'D',
+    },
+  },
+  gender: 'male',
+  favoriteColor: 'black',
+};
+
+const { favoriteColor: color } = user;
+console.log(color);
+
+const {
+  name: { mName: userName },
+} = user;
+console.log(userName);
+
+const {
+  name: {
+    nickName: { a: calledAs },
+  },
+} = user;
+
+console.log(calledAs);
+
+const friendsAlt = ['A', 'B', 'C'];
+const [, , Test] = friendsAlt;
+console.log(Test);
+
+// 5-10 Type Alias in typescript
+const user2: User = {
+  id: 123,
+  name: {
+    fname: 'Sheikh',
+    mName: 'Shakib',
+    lName: 'Ahmed',
+    nickName: {
+      a: 'B',
+      c: 'D',
+    },
+  },
+  gender: 'male',
+  favoriteColor: 'black',
+};
+
+console.log(user2);
+
+type AddValue = (num1: number, num2: number) => number;
+
+const addValue: AddValue = (num1: number, num2: number): number => num1 + num2;
+
+addValue(2, 2);
