@@ -112,7 +112,9 @@ const responseB = createArrayWithTupleGeneric(null, 26);
 
 console.log(responseA, responseB);
 
-const addStudentToCourse = <T>(studentInfo: T) => {
+type ObjectType = { id: number; name: string };
+
+const addStudentToCourse = <T extends ObjectType>(studentInfo: T) => {
   return { course: 'Next Level', ...studentInfo };
 };
 
@@ -130,8 +132,28 @@ const ObjB = {
   ok: null,
 };
 
+const ObjC = {
+  id: 222,
+  name: 'Test',
+};
+
 const resultA = addStudentToCourse(ObjA);
 const resultB = addStudentToCourse(ObjB);
+const resultC = addStudentToCourse(ObjC);
 
 console.log(resultA);
 console.log(resultB);
+console.log(resultC);
+
+// Constraint in typescript
+type Comfort = {
+  car: string;
+  bike: string;
+};
+
+type frugal = 'bike' | 'car' | 'truck';
+
+type transportationA = 'bike' | 'car' | 'truck';
+type transportationB = keyof Comfort;
+
+const myVehicle: transportationA = 'bike';
