@@ -157,3 +157,92 @@ type transportationA = 'bike' | 'car' | 'truck';
 type transportationB = keyof Comfort;
 
 const myVehicle: transportationA = 'bike';
+
+//
+type UserRoles = 'Admin' | 'User' | 'Guest';
+
+const canPublish = (role: UserRoles): boolean => {
+  if (role === 'Admin' || role === 'User') {
+    return true;
+  } else if (role === 'Guest') {
+    return false;
+  } else {
+    return false;
+  }
+};
+
+// 6-9 Use as const instead of enum
+
+// 7-1 Class and object
+// class Animal {
+//   constructor(
+//     public name: string,
+//     public species: string,
+//     public sound: string
+//   ) {}
+
+//   makeSound() {
+//     console.log(`${this.name} O_o ${this.sound}`);
+//   }
+// }
+
+// const dog = new Animal('🐶', '🐶', '🌭');
+// const cat = new Animal('😻', '🐈‍⬛', '🐈');
+// console.log(dog, cat);
+// dog.makeSound();
+// cat.makeSound();
+
+// 7-2 Inheritance, the 1st pilar of OOP
+
+class Parent {
+  name: string;
+  age: number;
+  classNo: number;
+
+  constructor(name: string, age: number, classNo: number) {
+    this.name = name;
+    this.age = age;
+    this.classNo = classNo;
+  }
+
+  mostTimeSpent(hours: number | undefined): void {
+    if (typeof hours == 'number') {
+      console.log(`💤 for ${hours} Hours!`);
+    } else {
+      console.log(`💤 for Hours!`);
+    }
+  }
+}
+
+class Student extends Parent {}
+
+const studentA = new Student('A', 17, 8);
+const studentB = new Student('B', 15, 6);
+
+console.log(studentA, studentB);
+studentA.mostTimeSpent(8);
+studentB.mostTimeSpent(7);
+
+class Teacher extends Parent {
+  designation: string;
+
+  constructor(name: string, age: number, classNo: number, designation: string) {
+    super(name, age, classNo);
+    this.designation = designation;
+  }
+
+  mostTimeSpent(hours: number | undefined): void {
+    if (typeof hours == 'number') {
+      console.log(`💤 for ${hours} Hours!`);
+    } else {
+      console.log(`💤 for Hours!`);
+    }
+  }
+
+  teachingClass(hours: number) {
+    console.log(`Mr.${this.name}, Daily takes ${hours} hours of class!`);
+  }
+}
+
+const teacherA = new Teacher('A', 56, 8, 'Home Room Teacher');
+teacherA.teachingClass(8);
