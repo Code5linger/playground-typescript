@@ -97,3 +97,41 @@ const arrayBoolean = createArrayWithGeneric(true);
 const arrayObject = createArrayWithGeneric({ id: 123, name: 'O_o' });
 
 console.log(arrayString, arrayNumber, arrayBoolean, arrayObject);
+
+// Tuple
+
+const createArrayWithTuple = (value: string, params: number) => [value, params];
+
+const createArrayWithTupleGeneric = <X, Y>(value: X, params: Y) => [
+  value,
+  params,
+];
+
+const responseA = createArrayWithTupleGeneric(true, 'O_o');
+const responseB = createArrayWithTupleGeneric(null, 26);
+
+console.log(responseA, responseB);
+
+const addStudentToCourse = <T>(studentInfo: T) => {
+  return { course: 'Next Level', ...studentInfo };
+};
+
+const ObjA = {
+  id: 123,
+  name: 'O_o',
+  test: true,
+};
+
+const ObjB = {
+  id: 321,
+  name: 'XD',
+  test: false,
+  demo: true,
+  ok: null,
+};
+
+const resultA = addStudentToCourse(ObjA);
+const resultB = addStudentToCourse(ObjB);
+
+console.log(resultA);
+console.log(resultB);
