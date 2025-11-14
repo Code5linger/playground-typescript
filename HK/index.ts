@@ -130,3 +130,93 @@ class Employee implements Person {
 const personA = new Employee('A', 69);
 personA.greet('O_o');
 console.log(personA);
+
+// ! Step 7 - Types
+// type User = {
+//   firstName: string;
+//   lastName: string;
+//   age: number;
+// };
+
+type ID = string | number;
+
+function printID(id: ID) {
+  console.log(`ID = ${typeof id}`);
+}
+
+printID(12);
+printID('12');
+
+type EmployeeData = {
+  name: string;
+  startDate: Date;
+};
+
+type Manager = {
+  name: string;
+  department: string;
+};
+
+type TechLead = EmployeeData & Manager;
+
+const teachLead: TechLead = {
+  name: 'Test',
+  startDate: new Date(2025),
+  department: 'QA',
+};
+
+console.log(teachLead);
+
+// ! Step 8 - Arrays in TS
+
+const array: number[] = [1, 2, 3];
+console.log(array.length);
+
+function maxValue(arr: number[]) {
+  let max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+console.log(maxValue([1, 5, 3]));
+
+interface User {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
+
+function ageChecker(users: User[]) {
+  return users.filter((x) => x.age >= 18);
+}
+
+// const userA = {
+//   firstName: 'A',
+//   lastName: 'B',
+//   age: 15,
+// };
+
+// const userB = {
+//   firstName: 'C',
+//   lastName: 'D',
+//   age: 25,
+// };
+
+console.log(
+  ageChecker([
+    {
+      firstName: 'harkirat',
+      lastName: 'Singh',
+      age: 21,
+    },
+    {
+      firstName: 'Raman',
+      lastName: 'Singh',
+      age: 16,
+    },
+  ])
+);
