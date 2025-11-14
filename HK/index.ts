@@ -74,12 +74,12 @@ interface User {
   age: number;
 }
 
-const user: User = {
-  firstName: 'harkirat',
-  lastName: 'singh',
-  email: 'email@gmail.com',
-  age: 21,
-};
+// const user: User = {
+//   firstName: 'harkirat',
+//   lastName: 'singh',
+//   email: 'email@gmail.com',
+//   age: 21,
+// };
 
 //* Assignment #1 - Create a function isLegal that returns true or false if a user is above 18. It takes a user as an input.
 
@@ -206,17 +206,86 @@ function ageChecker(users: User[]) {
 //   age: 25,
 // };
 
-console.log(
-  ageChecker([
-    {
-      firstName: 'harkirat',
-      lastName: 'Singh',
-      age: 21,
-    },
-    {
-      firstName: 'Raman',
-      lastName: 'Singh',
-      age: 16,
-    },
-  ])
+// console.log(
+//   ageChecker([
+//     {
+//       firstName: 'harkirat',
+//       lastName: 'Singh',
+//       age: 21,
+//     },
+//     {
+//       firstName: '',
+//       lastName: 'Singh',
+//       age: 16,
+//     },
+//   ])
+// );
+
+//! Step 9 - Enums
+// type KeyInputs = 'up' | 'down' | 'left' | 'right';
+
+// enum Direction {
+//   Up,
+//   Down,
+//   Left,
+//   Right,
+// }
+
+// function gameInputs(keyPressed: Direction): void {
+//   if (keyPressed === Direction.Up) {
+//     console.log('Move Up');
+//   } else if (keyPressed === Direction.Down) {
+//     console.log('Move Down');
+//   } else if (keyPressed === Direction.Left) {
+//     console.log('Move Left');
+//   } else if (keyPressed === Direction.Right) {
+//     console.log('Move Right');
+//   } else {
+//     console.log('Invalid!');
+//   }
+// }
+
+// gameInputs(Direction.Up);
+// gameInputs(Direction.Down);
+// gameInputs(Direction.Left);
+// gameInputs(Direction.Right);
+
+// type Input = number | string;
+
+// function firstElement(array: Input[]): {
+//   return array[0];
+// }
+
+//! Step 1 - Pre-requisites
+
+interface UserInfo {
+  name: string;
+  age: number;
+}
+
+function sumOfAge(user1: UserInfo, user2: UserInfo) {
+  return user1.age + user2.age;
+}
+
+// Example usage
+const result = sumOfAge(
+  { name: 'harkirat', age: 20 },
+  { name: 'raman', age: 21 }
 );
+console.log(result); // Output: 9
+
+// ! Pick
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
+
+// For a profile display, only pick `name` and `email`
+type UserProfile = Pick<User, 'name' | 'email'>;
+
+const displayUserProfile = (user: UserProfile) => {
+  console.log(`Name: ${user.name}, Email: ${user.email}`);
+};
