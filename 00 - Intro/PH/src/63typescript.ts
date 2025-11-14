@@ -246,3 +246,5 @@ class Teacher extends Parent {
 
 const teacherA = new Teacher('A', 56, 8, 'Home Room Teacher');
 teacherA.teachingClass(8);
+
+// 7-3 Type guard using typeof and in
