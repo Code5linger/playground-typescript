@@ -1,23 +1,37 @@
-class Account {
-  constructor(
-    public id: number,
-    public owner: string,
-    public balance: number
-  ) {}
+// class Account {
+//   constructor(
+//     public id: number,
+//     public owner: string,
+//     private _balance: number
+//   ) {}
 
-  deposit(amount: number) {
-    if (amount <= 0) return 'Invalid Number';
+//   // getter
+//   get balance(): number {
+//     return this._balance;
+//   }
 
-    this.balance += amount;
-  }
-}
+//   // Setter
+//   set balance(value: number) {
+//     this._balance = value;
+//   }
 
-const accountA = new Account(1, 'Me', 0);
-console.log(accountA);
-accountA.deposit(69);
-console.log(accountA);
-accountA.deposit(100);
-console.log(accountA);
+//   // deposit(amount: number) {
+//   //   this._balance += amount;
+//   // }
+// }
+
+// const accountA = new Account(1, 'Me', 0);
+
+// console.log(accountA);
+// Using deposit
+// accountA.deposit(69);
+// console.log(accountA.balance);
+
+// accountA.balance = 100;
+// console.log(accountA.balance);
+
+// accountA.balance += 200;
+// console.log(accountA.balance);
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // class Animal {
@@ -42,84 +56,127 @@ console.log(accountA);
 
 // Parameter property
 
-class Animal {
-  constructor(
-    public id: number,
-    public type: string,
-    public sound: string,
-    public pet: boolean
-  ) {}
+// class Animal {
+//   constructor(
+//     public id: number,
+//     public type: string,
+//     public sound: string,
+//     public pet: boolean
+//   ) {}
 
-  logger(input: string): void {
-    console.log(
-      `${this.id} => ${this.type} => ${this.sound} => ${this.pet} & ${input}`
-    );
-  }
-}
+//   logger(input: string): void {
+//     console.log(
+//       `${this.id} => ${this.type} => ${this.sound} => ${this.pet} & ${input}`
+//     );
+//   }
+// }
 
-let dog = new Animal(1, 'Dog', 'O_O', true);
-console.log(dog);
-dog.logger('ZS');
+// let dog = new Animal(1, 'Dog', 'O_O', true);
+// console.log(dog);
+// dog.logger('ZS');
 
-let cat = new Animal(2, '😺', '🐈‍⬛', false);
-console.log(cat);
-cat.logger('👋');
+// let cat = new Animal(2, '😺', '🐈‍⬛', false);
+// console.log(cat);
+// cat.logger('👋');
 
-class Car {
-  make: string;
-  model: string;
-  year: number;
-  electric: boolean;
+// class Car {
+//   make: string;
+//   model: string;
+//   year: number;
+//   electric: boolean;
 
-  constructor(make: string, model: string, year: number, electric: boolean) {
-    this.make = make;
-    this.model = model;
-    this.year = year;
-    this.electric = electric;
-  }
+//   constructor(make: string, model: string, year: number, electric: boolean) {
+//     this.make = make;
+//     this.model = model;
+//     this.year = year;
+//     this.electric = electric;
+//   }
 
-  info() {
-    console.log(`${this.make}, ${this.model}, ${this.year}, ${this.electric}`);
-  }
-}
+//   info() {
+//     console.log(`${this.make}, ${this.model}, ${this.year}, ${this.electric}`);
+//   }
+// }
 
-let tesla = new Car('2009', '3X', 2010, true);
-tesla.info();
+// let tesla = new Car('2009', '3X', 2010, true);
+// tesla.info();
 
 class BankAccount {
   public readonly userId: number;
   public userName: string;
-  protected userBalance: number;
+  private _userBalance: number;
+
+  // getter
+  get userBalance(): number {
+    return this._userBalance;
+  }
+
+  // setter
+  set userBalance(value: number) {
+    this._userBalance = this._userBalance + value;
+  }
 
   constructor(userId: number, userName: string, userBalance: number) {
     this.userId = userId;
     this.userName = userName;
-    this.userBalance = userBalance;
+    this._userBalance = userBalance;
   }
 
-  private updateBalance(balance: number) {
-    this.userBalance = this.userBalance + balance;
-  }
-
-  getBalance(): number {
-    return this.userBalance;
-  }
+  // updateBalance(balance: number) {
+  //   this._userBalance = this._userBalance + balance;
+  // }
 }
 
-class StudentBankAC extends BankAccount {
-  test(update: number) {
-    this.userBalance += update;
-  }
+const myAccount = new BankAccount(111, 'O_o', 100);
+
+console.log(myAccount.userBalance);
+myAccount.userBalance += 100;
+console.log(myAccount.userBalance);
+myAccount.userBalance += 100;
+console.log(myAccount.userBalance);
+
+// let person = {};
+
+// class SeatAssignmet {
+//   [seatNumber: string]: string;
+// }
+
+// let seats = new SeatAssignmet();
+// seats.A1 = 'A';
+// seats['A2'] = 'B';
+// seats.A3 = 'C';
+
+// console.log(seats);
+
+// class Ride {
+//   static activeRides: number = 0;
+
+//   start() {
+//     this.activeRides++;
+//   }
+//   stop() {
+//     this.activeRides--;
+//   }
+// }
+
+// let riderA = new Ride();
+// let riderB = new Ride();
+
+// riderA.start();
+// console.log(riderA);
+// riderA.start();
+// console.log(riderA);
+// riderA.start();
+// console.log(riderA);
+// riderA.stop();
+// console.log(riderA);
+
+// riderB.start();
+// console.log(riderB);
+// riderB.start();
+// console.log(riderB);
+// riderB.start();
+// console.log(riderB);
+
+class Counter {
+  count: number = 0;
 }
-
-const myAccount = new BankAccount(123, 'Sakib', 100);
-// myAccount.updateBalance(20);
-// console.log((myAccount.userBalance += 100));
-console.log(myAccount);
-
-const myStudentAC = new StudentBankAC(456, 'O_o', 50);
-myStudentAC.test(20);
-console.log(myStudentAC);
-
-console.log(myAccount.getBalance());
-console.log(myStudentAC.getBalance());
